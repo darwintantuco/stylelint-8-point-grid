@@ -4,7 +4,7 @@ const { ruleMessages, validateOptions, report } = stylelint.utils;
 
 const ruleName = "plugin/8-point-grid";
 const messages = ruleMessages(ruleName, {
-  invalid: "Px values should be divisible by 8."
+  invalid: expected => `Defined pixel values should be divisible by ${expected}.`
 });
 
 const validBase = option => {
@@ -71,7 +71,7 @@ module.exports = createPlugin(ruleName, function(
           ruleName: ruleName,
           result: postcssResult,
           node: decl,
-          message: messages.invalid
+          message: messages.invalid(primaryOption.base)
         });
       }
     });
@@ -79,7 +79,11 @@ module.exports = createPlugin(ruleName, function(
 });
 
 // wat
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
-module.exports.extends = "stylelint-8-point-grid";
-module.exports.rules = { base: 8 };
+module.exports.ruleName = ruleName
+module.exports.messages = messages
+module.exports.plugins = ["stylelint-8-point-grid"]
+module.exports.rules = {
+  "plugin/8-point-grid": {
+    "base": 8
+  }
+}
