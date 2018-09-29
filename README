@@ -20,7 +20,7 @@ Update .stylelintrc or stylint config in `package.json`
 // .stylelintrc
 {
   "extends": [
-    "stylint-8-point-grid"
+    "stylelint-8-point-grid"
   ]
 }
 ```
@@ -30,12 +30,14 @@ Override default base value and properties
 ```js
 // .stylelintrc
 {
-  "plugins": [
+  "plugin": [
     "stylelint-8-point-grid"
   ],
   "rules": {
-    base: 4,
-    ignore: ["height", "width"]
+    "plugin/8-point-grid": {
+      "base": 8,
+      "ignore": ["width", "padding"]
+    }
   }
 }
 ```
