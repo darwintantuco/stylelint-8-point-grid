@@ -1,8 +1,12 @@
 # stylelint-8-point-grid
 [![Build Status](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid.svg?branch=master)](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid)
-Stylelint plugin to validate 8-point grid rules
 
-Checks any defined `height`, `width`, `padding` or `margin` in `pixels`
+Validates any defined `height`, `width`, `padding` or `margin`
+
+## Why?
+- [Intro to The 8-Point Grid System](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
+- [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
+
 
 ## Installation
 ### npm
@@ -31,7 +35,7 @@ Override default base value and properties
 ```js
 // .stylelintrc
 {
-  "plugin": [
+  "extends": [
     "stylelint-8-point-grid"
   ],
   "rules": {
