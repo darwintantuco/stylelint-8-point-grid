@@ -1,0 +1,41 @@
+# stylelint-8-point-grid
+Stylelint plugin to validate 8-point grid rules
+
+Checks any defined `height`, `width`, `padding` or `margin` in `pixels`
+
+## Installation
+### npm
+```
+npm install stylelint-8-point-grid --save-dev
+```
+### yarn
+```
+yarn add stylelint-8-point-grid --dev
+```
+
+## Usage
+### Basic
+Update .stylelintrc or stylint config in `package.json`
+```js
+// .stylelintrc
+{
+  "extends": [
+    "stylint-8-point-grid"
+  ]
+}
+```
+
+### Secondary Options
+Override default base value and properties
+```js
+// .stylelintrc
+{
+  "plugins": [
+    "stylelint-8-point-grid"
+  ],
+  "rules": {
+    base: 4,
+    ignore: ["height", "width"]
+  }
+}
+```

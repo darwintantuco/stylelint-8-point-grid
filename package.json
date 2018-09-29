@@ -1,0 +1,21 @@
+{
+  "name": "stylelint-8-point-grid",
+  "version": "0.1.0",
+  "description": "Stylelint plugin to validate 8-point grid rules",
+  "main": "index.js",
+  "repository": "git@github.com:dcrtantuco/stylelint-8-point-grid.git",
+  "author": "darwin christopher tantuco <darwinxciii@yahoo.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test",
+    "prettier:check": "prettier --list-different '*.js'",
+    "prettier:fix": "prettier --write '*.js'"
+  },
+  "dependencies": {
+    "stylelint": "^9.6.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.3",
+    "stylelint-test-rule-tape": "^0.2.0"
+  }
+}
