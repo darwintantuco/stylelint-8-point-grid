@@ -34,7 +34,6 @@ testRule(eightPointGrid.rule, {
   ]
 });
 
-
 testRule(eightPointGrid.rule, {
   ruleName: eightPointGrid.ruleName,
   config: {
@@ -44,7 +43,7 @@ testRule(eightPointGrid.rule, {
 
   accept: [
     { code: ".generic-card { margin-left: 8px; }" },
-    { code: ".generic-card { padding-top: 64px; }" },
+    { code: ".generic-card { padding-top: 64px; }" }
   ],
   reject: [
     {
@@ -66,7 +65,7 @@ testRule(eightPointGrid.rule, {
     { code: ".generic-card { margin-left: 1px; }" },
     { code: ".generic-card { padding-top: 3px; }" },
     { code: ".generic-card { padding: 1px 2px 3px 4px; }" },
-    { code: ".generic-card { height: 4px; }", }
+    { code: ".generic-card { height: 4px; }" }
   ],
   reject: [
     {

@@ -1,12 +1,11 @@
 const stylelint = require("stylelint");
-const { createPlugin } = stylelint
+const { createPlugin } = stylelint;
 const { ruleMessages, validateOptions, report } = stylelint.utils;
 
 const ruleName = "plugin/8-point-grid";
 const messages = ruleMessages(ruleName, {
   invalid: "Px values should be divisible by 8."
 });
-
 
 const validBase = option => {
   return !isNaN(parseFloat(option)) && isFinite(option);
@@ -18,32 +17,35 @@ const validPixelValue = (value, base) => {
   // E.g.
   // padding-left: 8px 8px 1px 8px
   if (/\s/.test(value)) {
-    values = value.split(/ +/)
+    values = value.split(/ +/);
     return values.every(value => {
       if (!hasPixelUnit(value)) {
-        return true
+        return true;
       }
-      return checkDivisibility(value, base)
-    })
+      return checkDivisibility(value, base);
+    });
   } else {
-    if (!hasPixelUnit(value)) return true
-    return checkDivisibility(value, base)
+    if (!hasPixelUnit(value)) return true;
+    return checkDivisibility(value, base);
   }
-}
+};
 
 const hasPixelUnit = value => {
-  return String(value).includes("px")
-}
+  return String(value).includes("px");
+};
 
 const checkDivisibility = (value, base) => {
-  return (Number(value.match(/\d+/)[0] % Number(base)) === 0)
-}
+  return Number(value.match(/\d+/)[0] % Number(base)) === 0;
+};
 
 const pattern = props => {
-  return new RegExp(props.join("|"))
-}
+  return new RegExp(props.join("|"));
+};
 
-module.exports = createPlugin(ruleName, function(primaryOption, secondaryOption) {
+module.exports = createPlugin(ruleName, function(
+  primaryOption,
+  secondaryOption
+) {
   return (postcssRoot, postcssResult) => {
     const validOptions = validateOptions(postcssResult, ruleName, {
       actual: primaryOption,
@@ -55,10 +57,12 @@ module.exports = createPlugin(ruleName, function(primaryOption, secondaryOption)
 
     if (!validOptions) return;
 
-    let properties = ["margin", "padding", "height", "width"]
+    let properties = ["margin", "padding", "height", "width"];
     if (primaryOption.ignore) {
       // wat
-      properties = properties.filter(prop => !primaryOption.ignore.includes(prop))
+      properties = properties.filter(
+        prop => !primaryOption.ignore.includes(prop)
+      );
     }
 
     postcssRoot.walkDecls(pattern(properties), function(decl) {
@@ -70,9 +74,9 @@ module.exports = createPlugin(ruleName, function(primaryOption, secondaryOption)
           message: messages.invalid
         });
       }
-    })
-  }
-})
+    });
+  };
+});
 
 // wat
 module.exports.ruleName = ruleName;
