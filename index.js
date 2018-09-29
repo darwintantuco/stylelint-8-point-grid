@@ -4,7 +4,8 @@ const { ruleMessages, validateOptions, report } = stylelint.utils;
 
 const ruleName = "plugin/8-point-grid";
 const messages = ruleMessages(ruleName, {
-  invalid: expected => `Defined pixel values should be divisible by ${expected}.`
+  invalid: expected =>
+    `Defined pixel values should be divisible by ${expected}.`
 });
 
 const validBase = option => {
@@ -79,11 +80,11 @@ module.exports = createPlugin(ruleName, function(
 });
 
 // wat
-module.exports.ruleName = ruleName
-module.exports.messages = messages
-module.exports.plugins = ["stylelint-8-point-grid"]
+module.exports.ruleName = ruleName;
+module.exports.messages = messages;
+module.exports.plugins = ["stylelint-8-point-grid"];
 module.exports.rules = {
   "plugin/8-point-grid": {
-    "base": 8
+    base: 8
   }
-}
+};
