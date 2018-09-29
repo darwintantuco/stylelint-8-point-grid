@@ -1,7 +1,7 @@
 # stylelint-8-point-grid
 [![Build Status](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid.svg?branch=master)](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid)
 
-Validates any defined `height`, `width`, `padding` or `margin`
+Validates any defined `height`, `width`, `padding` and `margin`
 
 ## Why?
 - [Intro to The 8-Point Grid System](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
@@ -19,8 +19,7 @@ yarn add stylelint-8-point-grid --dev
 ```
 
 ## Usage
-### Basic
-Update .stylelintrc or stylint config in `package.json`
+Update .stylelintrc or stylelint config in `package.json`
 ```js
 // .stylelintrc
 {
@@ -30,7 +29,7 @@ Update .stylelintrc or stylint config in `package.json`
 }
 ```
 
-### Secondary Options
+## Configuration
 Override default base value and properties
 ```js
 // .stylelintrc
