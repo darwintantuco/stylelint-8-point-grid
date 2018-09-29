@@ -1,4 +1,5 @@
 # stylelint-8-point-grid
+[![Build Status](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid.svg?branch=master)](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid)
 Stylelint plugin to validate 8-point grid rules
 
 Checks any defined `height`, `width`, `padding` or `margin` in `pixels`
