@@ -15,9 +15,7 @@ const validPixelValue = (value, base) => {
     // e.g. padding: 8px 8px 1px 8px
     values = value.split(/ +/);
     return values.every(value => {
-      if (!hasPixelUnit(value)) {
-        return true;
-      }
+      if (!hasPixelUnit(value)) return true;
       return divisibleByBase(value, base);
     });
   } else {
@@ -26,17 +24,15 @@ const validPixelValue = (value, base) => {
   }
 };
 
-const hasPixelUnit = value => {
-  return String(value).includes("px");
-};
+const hasPixelUnit = value => String(value).includes("px");
 
 const divisibleByBase = (value, base) => {
-  return Number(value.match(/\d+/)[0] % Number(base)) === 0;
+  const number = value.match(/\d+/);
+  if (number === null) return false;
+  return Number(number) % Number(base) === 0;
 };
 
-const pattern = props => {
-  return new RegExp(props.join("|"));
-};
+const pattern = props => new RegExp(props.join("|"));
 
 module.exports = createPlugin(ruleName, (primaryOption, secondaryOption) => {
   return (postcssRoot, postcssResult) => {
