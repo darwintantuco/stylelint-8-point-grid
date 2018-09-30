@@ -32,7 +32,11 @@ Update .stylelintrc or stylelint config in `package.json`
 ```
 
 ## Configuration
-Override default base value and properties
+### base (default: 8)
+- overrides default base value
+### ignore (default: [])
+- should be an array containing properties to exclude
+- supported values: `height`, `width`, `padding`, `margin`
 ```js
 // .stylelintrc
 {
