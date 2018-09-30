@@ -21,7 +21,7 @@ yarn add stylelint-8-point-grid --dev
 ```
 
 ## Usage
-Update .stylelintrc or stylelint config in `package.json`
+### Recommended config
 ```js
 // .stylelintrc
 {
@@ -33,10 +33,12 @@ Update .stylelintrc or stylelint config in `package.json`
 
 ## Extending the config
 ### base (default: 8)
-- overrides default base value
-### ignore (default: [])
-- an array containing properties to ignore
+- value used for divisibility checking
+### ignore (default: [ ])
+- array of properties to be excluded from divisibility checking
 - supported values: `height`, `width`, `padding`, `margin`
+### whitelisted (default: [ ])
+- array of px values to be excluded from divisibility checking
 ```js
 // .stylelintrc
 {
@@ -46,7 +48,8 @@ Update .stylelintrc or stylelint config in `package.json`
   "rules": {
     "plugin/8-point-grid": {
       "base": 4,
-      "ignore": ["width", "padding"]
+      "whitelisted": ["2px", "1px"]
+      "ignore": ["width", "height"]
     }
   }
 }
