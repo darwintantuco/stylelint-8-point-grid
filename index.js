@@ -4,7 +4,8 @@ const { ruleMessages, validateOptions, report } = stylelint.utils;
 
 const ruleName = "plugin/8-point-grid";
 const messages = ruleMessages(ruleName, {
-  invalid: (prop, expected) => `${prop} should be divisible by ${expected}.`
+  invalid: (prop, actual, base) =>
+    `Invalid \`${prop}: ${actual}\`. It should be divisible by ${base}px.`
 });
 
 const validBase = option => !isNaN(parseFloat(option)) && isFinite(option);
@@ -56,7 +57,7 @@ module.exports = createPlugin(ruleName, (primaryOption, secondaryOption) => {
           ruleName: ruleName,
           result: postcssResult,
           node: decl,
-          message: messages.invalid(decl.prop, primaryOption.base)
+          message: messages.invalid(decl.prop, decl.value, primaryOption.base)
         });
       }
     });
