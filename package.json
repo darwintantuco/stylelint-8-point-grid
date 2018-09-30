@@ -1,6 +1,6 @@
 {
   "name": "stylelint-8-point-grid",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Stylelint plugin to validate 8-point grid rules",
   "main": "index.js",
   "repository": "git@github.com:dcrtantuco/stylelint-8-point-grid.git",
@@ -17,5 +17,16 @@
   "devDependencies": {
     "prettier": "^1.14.3",
     "stylelint-test-rule-tape": "^0.2.0"
+  },
+  "keywords": [
+    "stylelint",
+    "stylelint-plugin",
+    "stylelint-config",
+    "css",
+    "scss"
+  ],
+  "homepage": "https://github.com/dcrtantuco/stylelint-8-point-grid",
+  "bugs": {
+    "url": "https://github.com/dcrtantuco/stylelint-8-point-grid/issues"
   }
 }

@@ -5,10 +5,11 @@ const { ruleMessages, validateOptions, report } = stylelint.utils;
 const ruleName = "plugin/8-point-grid";
 const messages = ruleMessages(ruleName, {
   invalid: (prop, actual, base) =>
-    `Invalid \`${prop}: ${actual}\`. It should be divisible by ${base}px.`
+    `Invalid \`${prop}: ${actual}\`. It should be divisible by ${base}.`
 });
 
 const validBase = option => !isNaN(parseFloat(option)) && isFinite(option);
+const validWhitelisted = option => hasPixelUnit(option);
 
 const validPixelValue = (value, base) => {
   if (/\s/.test(value)) {
@@ -16,11 +17,9 @@ const validPixelValue = (value, base) => {
     // e.g. padding: 8px 8px 1px 8px
     values = value.split(/ +/);
     return values.every(value => {
-      if (!hasPixelUnit(value)) return true;
       return divisibleByBase(value, base);
     });
   } else {
-    if (!hasPixelUnit(value)) return true;
     return divisibleByBase(value, base);
   }
 };
@@ -41,17 +40,19 @@ module.exports = createPlugin(ruleName, (primaryOption, secondaryOption) => {
       actual: primaryOption,
       possible: {
         base: validBase,
-        ignore: ["margin", "padding", "height", "width"]
+        ignore: ["margin", "padding", "height", "width"],
+        whitelisted: validWhitelisted
       }
     });
-
     if (!validOptions) return;
 
+    const { ignore, whitelisted } = primaryOption;
     let props = ["margin", "padding", "height", "width"];
-    if (primaryOption.ignore)
-      props = props.filter(prop => !primaryOption.ignore.includes(prop));
+    if (ignore) props = props.filter(prop => !ignore.includes(prop));
 
     postcssRoot.walkDecls(pattern(props), decl => {
+      if (!hasPixelUnit(decl.value)) return;
+      if (whitelisted && whitelisted.includes(decl.value)) return;
       if (!validPixelValue(decl.value, primaryOption.base)) {
         report({
           ruleName: ruleName,

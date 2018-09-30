@@ -1,6 +1,7 @@
-var testRule = require("stylelint-test-rule-tape");
-var eightPointGrid = require("./");
+const testRule = require("stylelint-test-rule-tape");
+const eightPointGrid = require("./");
 
+// Base Config
 testRule(eightPointGrid.rule, {
   ruleName: eightPointGrid.ruleName,
   config: {
@@ -38,15 +39,20 @@ testRule(eightPointGrid.rule, {
   ]
 });
 
+// Extended Config with custom base and ignore list
 testRule(eightPointGrid.rule, {
   ruleName: eightPointGrid.ruleName,
   config: {
-    base: 4
+    base: 4,
+    whitelisted: ["1px"],
+    ignore: "width"
   },
 
   accept: [
     { code: ".generic-card { margin-left: 8px; }" },
-    { code: ".generic-card { padding-top: 64px; }" }
+    { code: ".generic-card { padding-top: 64px; }" },
+    { code: ".generic-card { width: 1px; }" },
+    { code: ".generic-card { height: 1px; }" }
   ],
 
   reject: [
@@ -57,10 +63,12 @@ testRule(eightPointGrid.rule, {
   ]
 });
 
+// Extended Config with custom base and whitelisted
 testRule(eightPointGrid.rule, {
   ruleName: eightPointGrid.ruleName,
   config: {
     base: 4,
+    whitelisted: ["2px", "1px"],
     ignore: ["margin", "padding"]
   },
 
@@ -68,7 +76,9 @@ testRule(eightPointGrid.rule, {
     { code: ".generic-card { margin-left: 1px; }" },
     { code: ".generic-card { padding-top: 3px; }" },
     { code: ".generic-card { padding: 1px 2px 3px 4px; }" },
-    { code: ".generic-card { height: 4px; }" }
+    { code: ".generic-card { height: 4px; }" },
+    { code: ".generic-card { height: 2px; }" },
+    { code: ".generic-card { height: 1px; }" }
   ],
 
   reject: [
