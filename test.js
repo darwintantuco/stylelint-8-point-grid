@@ -17,19 +17,19 @@ testRule(eightPointGrid.rule, {
   reject: [
     {
       code: ".generic-card { margin: 2px 8px; }",
-      message: eightPointGrid.messages.invalid(8)
+      message: eightPointGrid.messages.invalid("margin", 8)
     },
     {
       code: ".generic-card { padding-left: 60px; }",
-      message: eightPointGrid.messages.invalid(8)
+      message: eightPointGrid.messages.invalid("padding-left", 8)
     },
     {
       code: ".generic-card { padding: 8px 8px   1px 8px; }",
-      message: eightPointGrid.messages.invalid(8)
+      message: eightPointGrid.messages.invalid("padding", 8)
     },
     {
       code: ".generic-card { width: 100px; }",
-      message: eightPointGrid.messages.invalid(8)
+      message: eightPointGrid.messages.invalid("width", 8)
     }
   ]
 });
@@ -48,7 +48,7 @@ testRule(eightPointGrid.rule, {
   reject: [
     {
       code: ".generic-card { padding-left: 3px; }",
-      message: eightPointGrid.messages.invalid(4)
+      message: eightPointGrid.messages.invalid("padding-left", 4)
     }
   ]
 });
@@ -70,11 +70,11 @@ testRule(eightPointGrid.rule, {
   reject: [
     {
       code: ".generic-card { width: 3px; }",
-      message: eightPointGrid.messages.invalid(4)
+      message: eightPointGrid.messages.invalid("width", 4)
     },
     {
       code: ".generic-card { height: 3px; }",
-      message: eightPointGrid.messages.invalid(4)
+      message: eightPointGrid.messages.invalid("height", 4)
     }
   ]
 });
