@@ -35,7 +35,7 @@ Update .stylelintrc or stylelint config in `package.json`
 ### base (default: 8)
 - overrides default base value
 ### ignore (default: [])
-- should be an array containing properties to exclude
+- an array containing properties to ignore
 - supported values: `height`, `width`, `padding`, `margin`
 ```js
 // .stylelintrc
