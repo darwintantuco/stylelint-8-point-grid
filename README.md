@@ -3,6 +3,8 @@
 
 Validates any defined `height`, `width`, `padding` and `margin`
 
+![](demo.png)
+
 ## Why?
 - [Intro to The 8-Point Grid System](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
 - [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
@@ -39,7 +41,7 @@ Override default base value and properties
   ],
   "rules": {
     "plugin/8-point-grid": {
-      "base": 8,
+      "base": 4,
       "ignore": ["width", "padding"]
     }
   }
