@@ -31,7 +31,7 @@ Update .stylelintrc or stylelint config in `package.json`
 }
 ```
 
-## Configuration
+## Extending the config
 ### base (default: 8)
 - overrides default base value
 ### ignore (default: [])
