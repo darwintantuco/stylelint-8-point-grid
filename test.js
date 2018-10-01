@@ -50,7 +50,7 @@ testRule(eightPointGrid.rule, {
   ruleName: eightPointGrid.ruleName,
   config: {
     base: 4,
-    whitelisted: ["2px", "1px"],
+    whitelist: ["2px", "1px"],
     ignore: ["width"]
   },
 

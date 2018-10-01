@@ -10,23 +10,23 @@ const messages = ruleMessages(ruleName, {
 
 const pattern = props => new RegExp(props.join("|"));
 const validBase = option => !isNaN(parseFloat(option)) && isFinite(option);
-const validWhitelisted = option => hasPixelUnit(option);
+const validWhitelist = option => hasPixelValue(option);
 
-const validPixelValue = (value, base, whitelisted) => {
+const validPixelValue = (value, base, whitelist) => {
   if (/\s/.test(value)) {
     // Handles multiple px values
     // e.g. padding: 8px 8px 1px 8px
     values = value.split(/ +/);
     return values.every(
-      value => inWhitelisted(whitelisted, value) || divisibleByBase(value, base)
+      value => isWhitelist(whitelist, value) || divisibleByBase(value, base)
     );
   }
-  return inWhitelisted(whitelisted, value) || divisibleByBase(value, base);
+  return isWhitelist(whitelist, value) || divisibleByBase(value, base);
 };
 
-const hasPixelUnit = value => String(value).includes("px");
-const inWhitelisted = (whitelisted, value) =>
-  (whitelisted && whitelisted.includes(value)) || false;
+const hasPixelValue = value => String(value).includes("px");
+const isWhitelist = (whitelist, value) =>
+  (whitelist && whitelist.includes(value)) || false;
 
 const divisibleByBase = (value, base) => {
   const number = value.match(/\d+/);
@@ -41,18 +41,18 @@ module.exports = createPlugin(ruleName, (primaryOption, secondaryOption) => {
       possible: {
         base: validBase,
         ignore: ["margin", "padding", "height", "width"],
-        whitelisted: validWhitelisted
+        whitelist: validWhitelist
       }
     });
     if (!validOptions) return;
 
-    const { ignore, whitelisted } = primaryOption;
+    const { ignore, whitelist } = primaryOption;
     let props = ["margin", "padding", "height", "width"];
     if (ignore) props = props.filter(prop => !ignore.includes(prop));
 
     postcssRoot.walkDecls(pattern(props), decl => {
-      if (!hasPixelUnit(decl.value)) return;
-      if (!validPixelValue(decl.value, primaryOption.base, whitelisted)) {
+      if (!hasPixelValue(decl.value)) return;
+      if (!validPixelValue(decl.value, primaryOption.base, whitelist)) {
         report({
           ruleName: ruleName,
           result: postcssResult,

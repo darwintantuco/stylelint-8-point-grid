@@ -37,7 +37,7 @@ yarn add stylelint-8-point-grid --dev
 ### ignore (default: [ ])
 - array of properties to be excluded from divisibility checking
 - supported values: `height`, `width`, `padding`, `margin`
-### whitelisted (default: [ ])
+### whitelist (default: [ ])
 - array of px values to be excluded from divisibility checking
 ```js
 // .stylelintrc
@@ -48,7 +48,7 @@ yarn add stylelint-8-point-grid --dev
   "rules": {
     "plugin/8-point-grid": {
       "base": 4,
-      "whitelisted": ["2px", "1px"]
+      "whitelist": ["2px", "1px"]
       "ignore": ["width", "height"]
     }
   }
