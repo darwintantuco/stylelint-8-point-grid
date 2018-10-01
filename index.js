@@ -8,31 +8,31 @@ const messages = ruleMessages(ruleName, {
     `Invalid \`${prop}: ${actual}\`. It should be divisible by ${base}.`
 });
 
+const pattern = props => new RegExp(props.join("|"));
 const validBase = option => !isNaN(parseFloat(option)) && isFinite(option);
 const validWhitelisted = option => hasPixelUnit(option);
 
-const validPixelValue = (value, base) => {
+const validPixelValue = (value, base, whitelisted) => {
   if (/\s/.test(value)) {
     // Handles multiple px values
     // e.g. padding: 8px 8px 1px 8px
     values = value.split(/ +/);
-    return values.every(value => {
-      return divisibleByBase(value, base);
-    });
-  } else {
-    return divisibleByBase(value, base);
+    return values.every(
+      value => inWhitelisted(whitelisted, value) || divisibleByBase(value, base)
+    );
   }
+  return inWhitelisted(whitelisted, value) || divisibleByBase(value, base);
 };
 
 const hasPixelUnit = value => String(value).includes("px");
+const inWhitelisted = (whitelisted, value) =>
+  (whitelisted && whitelisted.includes(value)) || false;
 
 const divisibleByBase = (value, base) => {
   const number = value.match(/\d+/);
   if (number === null) return false;
   return Number(number) % Number(base) === 0;
 };
-
-const pattern = props => new RegExp(props.join("|"));
 
 module.exports = createPlugin(ruleName, (primaryOption, secondaryOption) => {
   return (postcssRoot, postcssResult) => {
@@ -52,8 +52,7 @@ module.exports = createPlugin(ruleName, (primaryOption, secondaryOption) => {
 
     postcssRoot.walkDecls(pattern(props), decl => {
       if (!hasPixelUnit(decl.value)) return;
-      if (whitelisted && whitelisted.includes(decl.value)) return;
-      if (!validPixelValue(decl.value, primaryOption.base)) {
+      if (!validPixelValue(decl.value, primaryOption.base, whitelisted)) {
         report({
           ruleName: ruleName,
           result: postcssResult,
