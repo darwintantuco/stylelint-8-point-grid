@@ -13,7 +13,8 @@ testRule(eightPointGrid.rule, {
     { code: ".generic-card { padding-left: 64px; }" },
     { code: ".generic-card { height: 100%; }" },
     { code: ".generic-card { margin: 8px 16px; }" },
-    { code: ".generic-card { margin: 8px 0; }" }
+    { code: ".generic-card { margin: 8px 0; }" },
+    { code: ".generic-card { margin: -64px; }" }
   ],
 
   reject: [
@@ -36,6 +37,10 @@ testRule(eightPointGrid.rule, {
     {
       code: ".generic-card { width: 100px; }",
       message: eightPointGrid.messages.invalid("width", "100px", 8)
+    },
+    {
+      code: ".generic-card { margin-top: -60px; }",
+      message: eightPointGrid.messages.invalid("margin-top", "-60px", 8)
     }
   ]
 });
