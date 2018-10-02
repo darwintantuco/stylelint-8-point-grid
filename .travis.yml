@@ -1,3 +1,6 @@
-language: bash
+language: node_js
 
-script: yarn && yarn test && yarn run prettier:check
+script:
+  - yarn run eslint
+  - yarn prettier:check
+  - yarn test
