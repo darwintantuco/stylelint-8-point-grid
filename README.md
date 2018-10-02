@@ -9,7 +9,6 @@ Validates any defined `height`, `width`, `padding` and `margin`
 - [Intro to The 8-Point Grid System](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
 - [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
 
-
 ## Installation
 ### npm
 ```
@@ -21,6 +20,7 @@ yarn add stylelint-8-point-grid --dev
 ```
 
 ## Usage
+Update .stylelintrc or stylelint config in `package.json`
 ### Recommended config
 ```js
 // .stylelintrc
@@ -54,3 +54,9 @@ yarn add stylelint-8-point-grid --dev
   }
 }
 ```
+
+---
+
+## License
+
+MIT
