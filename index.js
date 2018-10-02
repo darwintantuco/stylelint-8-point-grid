@@ -20,13 +20,13 @@ const validBase = option => !isNaN(parseFloat(option)) && isFinite(option);
 const validWhitelist = option => hasPixelValue(option);
 
 const validPixelValue = (value, base, whitelist) => {
-  return value
-    // Handle multiple px values
-    // e.g. padding: 8px 8px 1px 8px
-    .split(/ +/)
-    .every(
-      value => isWhitelist(whitelist, value) || divisibleBy(value, base)
-    );
+  return (
+    value
+      // Handle multiple px values
+      // e.g. padding: 8px 8px 1px 8px
+      .split(/ +/)
+      .every(value => isWhitelist(whitelist, value) || divisibleBy(value, base))
+  );
 };
 
 const hasPixelValue = value => String(value).includes("px");
