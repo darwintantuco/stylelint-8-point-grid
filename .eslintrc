@@ -1,0 +1,4 @@
+{
+  "extends": ["standard", "standard-jsx"],
+  "parser": "babel-eslint"
+}
