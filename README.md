@@ -1,7 +1,7 @@
 # stylelint-8-point-grid
 [![Build Status](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid.svg?branch=master)](https://travis-ci.org/dcrtantuco/stylelint-8-point-grid)
 
-Validates any defined `height`, `width`, `padding` and `margin`
+Validates any defined `margin`, `padding`, `height`, and `width`
 
 ![](demo.png)
 
@@ -32,13 +32,6 @@ Update .stylelintrc or stylelint config in `package.json`
 ```
 
 ## Extending the config
-### base (default: 8)
-- value used for divisibility checking
-### ignore (default: [ ])
-- array of properties to be excluded from divisibility checking
-- supported values: `height`, `width`, `padding`, `margin`
-### whitelist (default: [ ])
-- array of px values to be excluded from divisibility checking
 ```js
 // .stylelintrc
 {
@@ -48,14 +41,42 @@ Update .stylelintrc or stylelint config in `package.json`
   "rules": {
     "plugin/8-point-grid": {
       "base": 4,
-      "whitelist": ["2px", "1px"]
+      "whitelist": ["2px", "1px"],
       "ignore": ["width", "height"]
     }
   }
 }
 ```
 
----
+### base (default: 8)
+value used for divisibility checking
+
+### whitelist
+array of px values to be excluded from divisibility checking
+
+### ignore
+array of css properties to be excluded from divisibility checking
+
+supported values:
+- margin
+- margin-top
+- margin-bottom
+- margin-left
+- margin-right
+
+- padding
+- padding-top
+- padding-bottom
+- padding-left
+- padding-right
+
+- height
+- min-height
+- max-height
+
+- width
+- min-width
+- max-width
 
 ## License
 
