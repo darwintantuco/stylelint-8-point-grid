@@ -24,7 +24,7 @@ const validPixelValue = (value, base, whitelist) => {
     value
       // Handle multiple px values
       // e.g. padding: 8px 8px 1px 8px
-      .split(/ +/)
+      .split(/[\s\r\n]+/)
       .every(value => isWhitelist(whitelist, value) || divisibleBy(value, base))
   )
 }
