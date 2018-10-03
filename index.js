@@ -7,29 +7,57 @@ const rules = {
     base: 8
   }
 }
-const blacklist = ['margin', 'padding', 'height', 'width']
+
+const blacklist = [
+  'margin',
+  'margin-top',
+  'margin-bottom',
+  'margin-left',
+  'margin-right',
+
+  'padding',
+  'padding-top',
+  'padding-bottom',
+  'padding-left',
+  'padding-right',
+
+  'height',
+  'min-height',
+  'max-height',
+
+  'width',
+  'min-width',
+  'max-width'
+]
+
 const plugins = ['stylelint-8-point-grid']
+
 const ruleName = 'plugin/8-point-grid'
+
 const messages = ruleMessages(ruleName, {
   invalid: (prop, actual, base) =>
     `Invalid \`${prop}: ${actual}\`. It should be divisible by ${base}.`
 })
 
-const pattern = props => new RegExp(props.join('|'))
+const pattern = props =>
+  new RegExp(props.map(prop => '^' + prop + '$').join('|'))
+
 const validBase = option => !isNaN(parseFloat(option)) && isFinite(option)
+
 const validWhitelist = option => hasPixelValue(option)
 
 const validPixelValue = (value, base, whitelist) => {
   return (
+    // handle multiple px values
+    //   e.g. padding: 8px 8px 1px 8px
     value
-      // Handle multiple px values
-      // e.g. padding: 8px 8px 1px 8px
       .split(/[\s\r\n]+/)
       .every(value => isWhitelist(whitelist, value) || divisibleBy(value, base))
   )
 }
 
 const hasPixelValue = value => String(value).includes('px')
+
 const isWhitelist = (whitelist, value) =>
   (whitelist && whitelist.includes(value)) || false
 
