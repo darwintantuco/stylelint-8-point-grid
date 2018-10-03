@@ -1,7 +1,7 @@
 const testRule = require('stylelint-test-rule-tape')
 const eightPointGrid = require('./')
 
-// Base Config
+// base config
 testRule(eightPointGrid.rule, {
   ruleName: eightPointGrid.ruleName,
   config: {
@@ -14,7 +14,9 @@ testRule(eightPointGrid.rule, {
     { code: '.generic-card { height: 100%; }' },
     { code: '.generic-card { margin: 8px 16px; }' },
     { code: '.generic-card { margin: 8px 0; }' },
-    { code: '.generic-card { margin: -64px; }' }
+    { code: '.generic-card { margin: -64px; }' },
+    // others
+    { code: '.generic-card { line-height: 4px; }' }
   ],
 
   reject: [
@@ -45,13 +47,13 @@ testRule(eightPointGrid.rule, {
   ]
 })
 
-// Extended Config
+// extended config
 testRule(eightPointGrid.rule, {
   ruleName: eightPointGrid.ruleName,
   config: {
     base: 4,
     whitelist: ['2px', '1px'],
-    ignore: ['width']
+    ignore: ['width', 'max-height', 'margin-bottom']
   },
 
   accept: [
@@ -62,7 +64,9 @@ testRule(eightPointGrid.rule, {
     { code: '.generic-card { height: 2px; }' },
     { code: '.generic-card { margin-left: 1px; }' },
     { code: '.generic-card { padding: 1px 2px 4px 4px; }' },
-    { code: '.generic-card { margin: 2px 0; }' }
+    { code: '.generic-card { margin: 2px 0; }' },
+    { code: '.generic-card { max-height: 101px; }' },
+    { code: '.generic-card { margin-bottom: 3px; }' }
   ],
 
   reject: [
