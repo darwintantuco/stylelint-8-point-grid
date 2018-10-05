@@ -14,6 +14,7 @@ testRule(eightPointGrid.rule, {
     { code: '.generic-card { height: 100%; }' },
     { code: '.generic-card { margin: 8px 16px; }' },
     { code: '.generic-card { margin: 8px 0; }' },
+    { code: '.generic-card { margin: 8px 0px; }' },
     { code: '.generic-card { margin: -64px; }' },
     {
       code: `.generic-card { margin:
@@ -22,6 +23,7 @@ testRule(eightPointGrid.rule, {
     },
     { code: '.generic-card { line-height: 4px; }' },
     { code: '.generic-card { margin: 0 auto; }' },
+    { code: '.generic-card { margin: 0px auto; }' },
     { code: '.generic-card { margin: 32px auto; }' },
     // ignore for now
     { code: '.generic-card { width: calc(100% - 31px); }' },
