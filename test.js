@@ -20,9 +20,16 @@ testRule(eightPointGrid.rule, {
                                 32px
                                 16px; }`
     },
-    { code: '.generic-card { width: calc(100% - 60px); }' },
-    // others
-    { code: '.generic-card { line-height: 4px; }' }
+    { code: '.generic-card { line-height: 4px; }' },
+    { code: '.generic-card { margin: 0 auto; }' },
+    { code: '.generic-card { margin: 32px auto; }' },
+    // ignore for now
+    { code: '.generic-card { width: calc(100% - 31px); }' },
+    { code: '.generic-card { padding-left: $field-height; }' },
+    {
+      code:
+        '.generic-card { padding: (($field-height - $line-height) / 2) 12px; }'
+    }
   ],
 
   reject: [

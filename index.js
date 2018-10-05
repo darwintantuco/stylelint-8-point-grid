@@ -56,14 +56,19 @@ const validPixelValue = (value, base, whitelist) => {
   )
 }
 
-const valid = val => hasPxValue(val) && !String(val).includes('calc')
+// ignore values with `calc` and sass variables
+const unsupported = ['calc', '\\$\\w+']
+
+const unsupportedPattern = new RegExp(unsupported.join('|'))
+
+const valid = val => hasPxValue(val) && !String(val).match(unsupportedPattern)
 
 const isWhitelist = (whitelist, value) =>
   (whitelist && whitelist.includes(value)) || false
 
 const divisibleBy = (value, base) => {
   const number = value.match(/\d+/)
-  if (number === null) return false
+  if (isNaN(number)) return true
   return Number(number) % Number(base) === 0
 }
 
