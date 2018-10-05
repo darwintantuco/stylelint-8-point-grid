@@ -15,6 +15,12 @@ testRule(eightPointGrid.rule, {
     { code: '.generic-card { margin: 8px 16px; }' },
     { code: '.generic-card { margin: 8px 0; }' },
     { code: '.generic-card { margin: -64px; }' },
+    {
+      code: `.generic-card { margin:
+                                32px
+                                16px; }`
+    },
+    { code: '.generic-card { width: calc(100% - 60px); }' },
     // others
     { code: '.generic-card { line-height: 4px; }' }
   ],
@@ -43,6 +49,10 @@ testRule(eightPointGrid.rule, {
     {
       code: '.generic-card { margin-top: -60px; }',
       message: eightPointGrid.messages.invalid('margin-top', '-60px', 8)
+    },
+    {
+      code: `.generic-card { margin: 1px\n  2px; }`,
+      message: eightPointGrid.messages.invalid('margin', '1px\n  2px', 8)
     }
   ]
 })

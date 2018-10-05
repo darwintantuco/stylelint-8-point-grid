@@ -42,9 +42,9 @@ const messages = ruleMessages(ruleName, {
 const pattern = props =>
   new RegExp(props.map(prop => '^' + prop + '$').join('|'))
 
-const validBase = option => !isNaN(parseFloat(option)) && isFinite(option)
+const validBase = val => !isNaN(parseFloat(val)) && isFinite(val)
 
-const validWhitelist = option => hasPixelValue(option)
+const hasPxValue = val => String(val).includes('px')
 
 const validPixelValue = (value, base, whitelist) => {
   return (
@@ -56,7 +56,7 @@ const validPixelValue = (value, base, whitelist) => {
   )
 }
 
-const hasPixelValue = value => String(value).includes('px')
+const valid = val => hasPxValue(val) && !String(val).includes('calc')
 
 const isWhitelist = (whitelist, value) =>
   (whitelist && whitelist.includes(value)) || false
@@ -74,7 +74,7 @@ const rule = createPlugin(ruleName, (primaryOption, secondaryOption) => {
       possible: {
         base: validBase,
         ignore: blacklist,
-        whitelist: validWhitelist
+        whitelist: hasPxValue
       }
     })
     if (!validOptions) return
@@ -84,7 +84,7 @@ const rule = createPlugin(ruleName, (primaryOption, secondaryOption) => {
     if (ignore) props = props.filter(prop => !ignore.includes(prop))
 
     postcssRoot.walkDecls(pattern(props), decl => {
-      if (!hasPixelValue(decl.value)) return
+      if (!valid(decl.value)) return
       if (!validPixelValue(decl.value, primaryOption.base, whitelist)) {
         report({
           ruleName: ruleName,
