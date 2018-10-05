@@ -9,6 +9,10 @@ Validates any defined `margin`, `padding`, `height`, and `width`
 - [Intro to The 8-Point Grid System](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
 - [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
 
+## Unsupported
+### `calc` CSS function
+### sass variables
+
 ## Installation
 ### npm
 ```

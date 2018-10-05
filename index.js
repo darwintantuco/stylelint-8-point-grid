@@ -42,9 +42,9 @@ const messages = ruleMessages(ruleName, {
 const pattern = props =>
   new RegExp(props.map(prop => '^' + prop + '$').join('|'))
 
-const validBase = option => !isNaN(parseFloat(option)) && isFinite(option)
+const validBase = val => !isNaN(parseFloat(val)) && isFinite(val)
 
-const validWhitelist = option => hasPixelValue(option)
+const hasPxValue = val => String(val).includes('px')
 
 const validPixelValue = (value, base, whitelist) => {
   return (
@@ -56,14 +56,19 @@ const validPixelValue = (value, base, whitelist) => {
   )
 }
 
-const hasPixelValue = value => String(value).includes('px')
+// ignore values with `calc` and sass variables
+const unsupported = ['calc', '\\$\\w+']
+
+const unsupportedPattern = new RegExp(unsupported.join('|'))
+
+const valid = val => hasPxValue(val) && !String(val).match(unsupportedPattern)
 
 const isWhitelist = (whitelist, value) =>
   (whitelist && whitelist.includes(value)) || false
 
 const divisibleBy = (value, base) => {
   const number = value.match(/\d+/)
-  if (number === null) return false
+  if (isNaN(number)) return true
   return Number(number) % Number(base) === 0
 }
 
@@ -74,7 +79,7 @@ const rule = createPlugin(ruleName, (primaryOption, secondaryOption) => {
       possible: {
         base: validBase,
         ignore: blacklist,
-        whitelist: validWhitelist
+        whitelist: hasPxValue
       }
     })
     if (!validOptions) return
@@ -84,7 +89,7 @@ const rule = createPlugin(ruleName, (primaryOption, secondaryOption) => {
     if (ignore) props = props.filter(prop => !ignore.includes(prop))
 
     postcssRoot.walkDecls(pattern(props), decl => {
-      if (!hasPixelValue(decl.value)) return
+      if (!valid(decl.value)) return
       if (!validPixelValue(decl.value, primaryOption.base, whitelist)) {
         report({
           ruleName: ruleName,

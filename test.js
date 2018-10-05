@@ -14,9 +14,24 @@ testRule(eightPointGrid.rule, {
     { code: '.generic-card { height: 100%; }' },
     { code: '.generic-card { margin: 8px 16px; }' },
     { code: '.generic-card { margin: 8px 0; }' },
+    { code: '.generic-card { margin: 8px 0px; }' },
     { code: '.generic-card { margin: -64px; }' },
-    // others
-    { code: '.generic-card { line-height: 4px; }' }
+    {
+      code: `.generic-card { margin:
+                                32px
+                                16px; }`
+    },
+    { code: '.generic-card { line-height: 4px; }' },
+    { code: '.generic-card { margin: 0 auto; }' },
+    { code: '.generic-card { margin: 0px auto; }' },
+    { code: '.generic-card { margin: 32px auto; }' },
+    // ignore for now
+    { code: '.generic-card { width: calc(100% - 31px); }' },
+    { code: '.generic-card { padding-left: $field-height; }' },
+    {
+      code:
+        '.generic-card { padding: (($field-height - $line-height) / 2) 12px; }'
+    }
   ],
 
   reject: [
@@ -43,6 +58,10 @@ testRule(eightPointGrid.rule, {
     {
       code: '.generic-card { margin-top: -60px; }',
       message: eightPointGrid.messages.invalid('margin-top', '-60px', 8)
+    },
+    {
+      code: `.generic-card { margin: 1px\n  2px; }`,
+      message: eightPointGrid.messages.invalid('margin', '1px\n  2px', 8)
     }
   ]
 })
