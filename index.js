@@ -27,7 +27,12 @@ const blacklist = [
 
   'width',
   'min-width',
-  'max-width'
+  'max-width',
+
+  'top',
+  'bottom',
+  'right',
+  'left'
 ]
 
 const plugins = ['stylelint-8-point-grid']

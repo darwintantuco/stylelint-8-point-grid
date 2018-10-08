@@ -25,6 +25,8 @@ testRule(eightPointGrid.rule, {
     { code: '.generic-card { margin: 0 auto; }' },
     { code: '.generic-card { margin: 0px auto; }' },
     { code: '.generic-card { margin: 32px auto; }' },
+    { code: '.generic-card { top: 0; }' },
+    { code: '.generic-card { left: 32px; }' },
     // ignore for now
     { code: '.generic-card { width: calc(100% - 31px); }' },
     { code: '.generic-card { padding-left: $field-height; }' },
@@ -62,6 +64,12 @@ testRule(eightPointGrid.rule, {
     {
       code: `.generic-card { margin: 1px\n  2px; }`,
       message: eightPointGrid.messages.invalid('margin', '1px\n  2px', 8)
+    },
+    {
+      code: '.generic-card { top: 1px; }'
+    },
+    {
+      code: '.generic-card { left: 31px; }'
     }
   ]
 })
