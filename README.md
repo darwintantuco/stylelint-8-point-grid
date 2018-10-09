@@ -10,8 +10,7 @@ Validates any defined `margin`, `padding`, `height`, and `width`
 - [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
 
 ## Unsupported
-### `calc` CSS function
-### sass variables
+`calc` CSS function and `sass variables`
 
 ## Installation
 ### npm
@@ -61,26 +60,11 @@ array of px values to be excluded from divisibility checking
 ### ignore
 array of css properties to be excluded from divisibility checking
 
-supported values:
-- margin
-- margin-top
-- margin-bottom
-- margin-left
-- margin-right
-
-- padding
-- padding-top
-- padding-bottom
-- padding-left
-- padding-right
-
-- height
-- min-height
-- max-height
-
-- width
-- min-width
-- max-width
+supported values: `margin`, `margin-top` `margin-bottom`, `margin-left`, `margin-right`,
+`padding`, `padding-top`, `padding-bottom`, `padding-left`, `padding-right`,
+`height`, `min-height`, `max-height`,
+`width`, `min-width`, `max-width`,
+`top`, ` bottom`, `right`, `left`
 
 ## License
 
