@@ -6,20 +6,18 @@
   "repository": "git@github.com:dcrtantuco/stylelint-8-point-grid.git",
   "author": "darwin christopher tantuco <darwinxciii@yahoo.com>",
   "license": "MIT",
+  "prettier": "@dcrtantuco/prettier-config",
   "scripts": {
     "test": "node test",
-    "prettier:check": "prettier-eslint --list-different '*.js'",
-    "prettier:fix": "prettier-eslint --write '*.js'",
-    "eslint": "eslint \"*.js\""
+    "prettier:check": "prettier --list-different '**/*.{css,scss}' '**/*.{js,jsx,ts,tsx}'",
+    "prettier:fix": "prettier --write '**/*.{css,scss}' 'js/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "stylelint": "^10.1.0"
   },
   "devDependencies": {
-    "babel-eslint": "10.0.1",
-    "prettier": "^1.14.3",
-    "prettier-eslint-cli": "4.7.1",
-    "standard": "12.0.1",
+    "@dcrtantuco/prettier-config": "^1.0.1",
+    "prettier": "^1.18.2",
     "stylelint-test-rule-tape": "^0.2.0"
   },
   "keywords": [
