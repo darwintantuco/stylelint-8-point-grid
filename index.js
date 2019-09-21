@@ -54,9 +54,10 @@ const hasPxValue = val => String(val).includes('px')
 const validPixelValue = (value, base, whitelist) => {
   return (
     // handle multiple px values
-    //   e.g. padding: 8px 8px 1px 8px
+    //   e.g. padding: 8px 8px 1px 8px or padding: 3em 8px 8px 8px;
     value
       .split(/[\s\r\n]+/)
+      .filter(hasPxValue)
       .every(value => isWhitelist(whitelist, value) || divisibleBy(value, base))
   )
 }
