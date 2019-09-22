@@ -13,7 +13,7 @@ All changes on this project will be documented in this file.
 
 ## [0.2.1] - Oct 6, 2018
 
-- Ability to extend blacklist
+- Ignore `calc` and saas variables
 
 ## [0.2.0] - Oct 4, 2018
 
