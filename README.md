@@ -64,7 +64,8 @@ supported values: `margin`, `margin-top` `margin-bottom`, `margin-left`, `margin
 `padding`, `padding-top`, `padding-bottom`, `padding-left`, `padding-right`,
 `height`, `min-height`, `max-height`,
 `width`, `min-width`, `max-width`,
-`top`, ` bottom`, `right`, `left`
+`top`, ` bottom`, `right`, `left`,
+`border`, `border-top`, `border-bottom`, `border-left`, `border-right`
 
 ## License
 
