@@ -78,7 +78,7 @@ const divisibleBy = (value, base) => {
   return Number(number) % Number(base) === 0
 }
 
-const rule = createPlugin(ruleName, (primaryOption, secondaryOption) => {
+const rule = createPlugin(ruleName, primaryOption => {
   return (postcssRoot, postcssResult) => {
     const validOptions = validateOptions(postcssResult, ruleName, {
       actual: primaryOption,

@@ -4,4 +4,5 @@ node_js:
 
 script:
   - yarn prettier:check
+  - yarn lint:js
   - yarn test

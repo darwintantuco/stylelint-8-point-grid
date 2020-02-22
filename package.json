@@ -7,16 +7,22 @@
   "author": "Darwin Christopher Tantuco <dcrtantuco@gmail.com>",
   "license": "MIT",
   "prettier": "@darwintantuco/prettier-config",
+  "eslintConfig": { "extends": ["@darwintantuco/eslint-config"] },
   "scripts": {
     "test": "node test",
     "prettier:check": "prettier --list-different '**/*.{css,scss}' '**/*.{js,jsx,ts,tsx}'",
-    "prettier:fix": "prettier --write '**/*.{css,scss}' 'js/**/*.{js,jsx,ts,tsx}'"
+    "prettier:fix": "prettier --write '**/*.{css,scss}' 'js/**/*.{js,jsx,ts,tsx}'",
+    "lint:js": "eslint '**/*.js'"
   },
   "dependencies": {
     "stylelint": "^10.1.0"
   },
   "devDependencies": {
+    "@darwintantuco/eslint-config": "^1.0.0",
     "@darwintantuco/prettier-config": "^1.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
     "prettier": "^1.18.2",
     "stylelint-test-rule-tape": "^0.2.0"
   },
