@@ -3,10 +3,10 @@
   "version": "0.2.3",
   "description": "Stylelint plugin to validate CSS with 8-point grid guideline",
   "main": "index.js",
-  "repository": "git@github.com:dcrtantuco/stylelint-8-point-grid.git",
-  "author": "darwin christopher tantuco <darwinxciii@yahoo.com>",
+  "repository": "git@github.com:darwintantuco/stylelint-8-point-grid.git",
+  "author": "Darwin Christopher Tantuco <dcrtantuco@gmail.com>",
   "license": "MIT",
-  "prettier": "@dcrtantuco/prettier-config",
+  "prettier": "@darwintantuco/prettier-config",
   "scripts": {
     "test": "node test",
     "prettier:check": "prettier --list-different '**/*.{css,scss}' '**/*.{js,jsx,ts,tsx}'",
@@ -16,7 +16,7 @@
     "stylelint": "^10.1.0"
   },
   "devDependencies": {
-    "@dcrtantuco/prettier-config": "^1.0.1",
+    "@darwintantuco/prettier-config": "^1.0.0",
     "prettier": "^1.18.2",
     "stylelint-test-rule-tape": "^0.2.0"
   },
@@ -27,8 +27,8 @@
     "css",
     "scss"
   ],
-  "homepage": "https://github.com/dcrtantuco/stylelint-8-point-grid",
+  "homepage": "https://github.com/darwintantuco/stylelint-8-point-grid",
   "bugs": {
-    "url": "https://github.com/dcrtantuco/stylelint-8-point-grid/issues"
+    "url": "https://github.com/darwintantuco/stylelint-8-point-grid/issues"
   }
 }

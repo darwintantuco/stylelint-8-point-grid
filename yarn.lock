@@ -119,10 +119,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@dcrtantuco/prettier-config@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@dcrtantuco/prettier-config/-/prettier-config-1.0.1.tgz#01405495f157866dce72adccdd3dfe972b16d307"
-  integrity sha512-HELeHSOVb2c2prgD0VlrD04kp4hgZED3MagbFITNIHkBTv0JwnuVHHowdQRPoWbD5ynC0Bp51nTD42dIOMKwnQ==
+"@darwintantuco/prettier-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@darwintantuco/prettier-config/-/prettier-config-1.0.0.tgz#01cffa3fa42bac722ceb03c3833d6a02e4319617"
+  integrity sha512-Pa7Tfd1uRlGwNFui1VpjmvBp3KZuMjWBQKaerIqLyO2bUgrrOfaUdK0cx83T9HM1Hn4F9Y20Sh6CEMnkfO9HqA==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
