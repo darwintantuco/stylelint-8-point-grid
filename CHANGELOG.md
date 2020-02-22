@@ -2,6 +2,11 @@
 
 All changes on this project will be documented in this file.
 
+## [0.2.4] - Feb 23, 2020
+
+- Configure eslint
+- Minor updates due to username change
+
 ## [0.2.3] - Sept 22, 2019
 
 - Added changelog
