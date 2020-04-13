@@ -19,7 +19,7 @@
     "lint:js": "eslint '**/*.{js,ts}'"
   },
   "dependencies": {
-    "stylelint": "^10.1.0"
+    "stylelint": "^13.3.2"
   },
   "devDependencies": {
     "@darwintantuco/eslint-config": "^1.0.1",
