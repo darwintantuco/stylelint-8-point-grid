@@ -1,5 +1,5 @@
 const testRule = require('stylelint-test-rule-tape')
-const eightPointGrid = require('./src/index')
+const eightPointGrid = require('./dist/index')
 
 // base config
 testRule(eightPointGrid.rule, {

@@ -1,17 +1,18 @@
-const validBase = (val) => !isNaN(parseFloat(val)) && isFinite(val)
+export const validBase = (base: number): boolean => base % 1 == 0
 
-const hasPixelValue = (val) => String(val).includes('px')
+export const hasPixelValue = (value: string): boolean =>
+  String(value).includes('px')
 
-const isWhitelist = (whitelist, value) =>
+const isWhitelist = (whitelist: string, value: string): boolean =>
   (whitelist && whitelist.includes(value)) || false
 
-const divisibleBy = (value, base) => {
+const divisibleBy = (value, base): boolean => {
   const number = value.match(/\d+/)
   if (isNaN(number)) return true
   return Number(number) % Number(base) === 0
 }
 
-const validPixelValue = (value, base, whitelist) => {
+export const validPixelValue = (value, base, whitelist): boolean => {
   return (
     // handle multiple px values
     //   e.g. padding: 8px 8px 1px 8px or padding: 3em 8px 8px 8px;
@@ -22,10 +23,4 @@ const validPixelValue = (value, base, whitelist) => {
         (value) => isWhitelist(whitelist, value) || divisibleBy(value, base)
       )
   )
-}
-
-module.exports = {
-  validBase,
-  hasPixelValue,
-  validPixelValue,
 }

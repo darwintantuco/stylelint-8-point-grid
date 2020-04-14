@@ -1,8 +1,8 @@
-const stylelint = require('stylelint')
-const { validBase, hasPixelValue, validPixelValue } = require('./utils')
+import { createPlugin, utils } from 'stylelint'
 
-const { createPlugin } = stylelint
-const { ruleMessages, validateOptions, report } = stylelint.utils
+import { validBase, hasPixelValue, validPixelValue } from './utils'
+
+const { ruleMessages, validateOptions, report } = utils
 
 const ruleName = 'plugin/8-point-grid'
 const rules = {
@@ -41,13 +41,13 @@ const blacklist = [
 // ignore values with `calc` and sass variables
 const unsupported = ['calc', '\\$\\w+']
 
-const pattern = (props) =>
+const pattern = (props: string[]): RegExp =>
   new RegExp(props.map((prop) => `^${prop}$`).join('|'))
 
 const unsupportedPattern = new RegExp(unsupported.join('|'))
 
-const valid = (val) =>
-  hasPixelValue(val) && !String(val).match(unsupportedPattern)
+const valid = (value: string): boolean =>
+  hasPixelValue(value) && !String(value).match(unsupportedPattern)
 
 const messages = ruleMessages(ruleName, {
   invalid: (prop, actual, base) =>
