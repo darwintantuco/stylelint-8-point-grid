@@ -24,6 +24,7 @@
   "devDependencies": {
     "@darwintantuco/eslint-config": "^1.0.1",
     "@darwintantuco/prettier-config": "^1.0.1",
+    "@types/stylelint": "^9.10.1",
     "stylelint-test-rule-tape": "^0.2.0",
     "typescript": "^3.8.3"
   },
