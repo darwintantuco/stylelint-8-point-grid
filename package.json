@@ -14,8 +14,8 @@
   },
   "scripts": {
     "test": "node test",
-    "prettier:check": "prettier --list-different '**/*.{js,ts,md}'",
-    "prettier:fix": "prettier --write '**/*.{js,ts,md}'",
+    "prettier:check": "prettier --list-different '**/*.{js,ts,md,json}'",
+    "prettier:fix": "prettier --write '**/*.{js,ts,md,json}'",
     "lint:js": "eslint '**/*.{js,ts}'"
   },
   "dependencies": {
