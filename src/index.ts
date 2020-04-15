@@ -39,23 +39,23 @@ const blacklist = [
 ]
 
 // ignore values with `calc` and sass variables
-const unsupported = ['calc', '\\$\\w+']
+const ignoreList = ['calc', '\\$\\w+']
 
 const pattern = (props: string[]): RegExp =>
   new RegExp(props.map((prop) => `^${prop}$`).join('|'))
 
-const unsupportedPattern = new RegExp(unsupported.join('|'))
+const ignorePattern = new RegExp(ignoreList.join('|'))
 
 const valid = (value: string): boolean =>
-  hasPixelValue(value) && !String(value).match(unsupportedPattern)
+  hasPixelValue(value) && !String(value).match(ignorePattern)
 
 const messages = ruleMessages(ruleName, {
   invalid: (prop, actual, base) =>
     `Invalid \`${prop}: ${actual}\`. It should be divisible by ${base}.`,
 })
 
-const rule = createPlugin(ruleName, (primaryOption) => {
-  return (postcssRoot, postcssResult) => {
+const { rule } = createPlugin(ruleName, (primaryOption) => {
+  return (postcssRoot, postcssResult): void => {
     const validOptions = validateOptions(postcssResult, ruleName, {
       actual: primaryOption,
       possible: {
@@ -66,9 +66,10 @@ const rule = createPlugin(ruleName, (primaryOption) => {
     })
     if (!validOptions) return
 
-    let props = blacklist
     const { ignore, whitelist } = primaryOption
-    if (ignore) props = props.filter((prop) => !ignore.includes(prop))
+
+    let props = blacklist
+    if (ignore) props = blacklist.filter((prop) => !ignore.includes(prop))
 
     postcssRoot.walkDecls(pattern(props), (decl) => {
       if (!valid(decl.value)) return
@@ -84,4 +85,4 @@ const rule = createPlugin(ruleName, (primaryOption) => {
   }
 })
 
-module.exports = { ...rule, plugins, messages, rules }
+export { rule, ruleName, plugins, messages, rules }
