@@ -14,8 +14,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm run ci",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run ci",
     "test": "ts-node 'tests/'",
     "prettier:check": "prettier --list-different '**/*.{js,ts,md,json}'",
     "prettier:fix": "prettier --write '**/*.{js,ts,md,json}'",
