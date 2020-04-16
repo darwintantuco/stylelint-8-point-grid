@@ -2,6 +2,11 @@
 
 All changes on this project will be documented in this file.
 
+## [0.2.6] - April 17, 2020
+
+- Fix compilation error
+- Fix entry point path
+
 ## [0.2.5] - April 17, 2020
 
 - Update linters

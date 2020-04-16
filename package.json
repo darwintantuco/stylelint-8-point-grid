@@ -1,8 +1,8 @@
 {
   "name": "stylelint-8-point-grid",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Stylelint plugin to validate CSS with 8-point grid guideline",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:darwintantuco/stylelint-8-point-grid.git",
   "author": "Darwin Christopher Tantuco <dcrtantuco@gmail.com>",
   "license": "MIT",
