@@ -6,14 +6,15 @@ Validates any defined `margin`, `padding`, `height`, and `width`
 
 ![](demo.png)
 
-## Why?
+## Inspiration
 
 - [Intro to The 8-Point Grid System](https://builttoadapt.io/intro-to-the-8-point-grid-system-d2573cde8632)
 - [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
 
-## Unsupported
+### Ignores
 
-`calc` CSS function and `sass variables`
+- css calc() function
+- sass variables
 
 ## Installation
 
@@ -74,11 +75,26 @@ array of px values to be excluded from divisibility checking
 
 array of css properties to be excluded from divisibility checking
 
-supported values: `margin`, `margin-top` `margin-bottom`, `margin-left`, `margin-right`,
-`padding`, `padding-top`, `padding-bottom`, `padding-left`, `padding-right`,
-`height`, `min-height`, `max-height`,
-`width`, `min-width`, `max-width`,
-`top`, `bottom`, `right`, `left`
+- margin
+- margin-top
+- margin-bottom
+- margin-left
+- margin-right
+- padding
+- padding-top
+- padding-bottom
+- padding-left
+- padding-right
+- height
+- min-height
+- max-height
+- width
+- min-width
+- max-width
+- top
+- bottom
+- right
+- left
 
 ## License
 

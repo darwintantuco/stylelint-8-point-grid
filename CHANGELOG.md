@@ -2,6 +2,11 @@
 
 All changes on this project will be documented in this file.
 
+## [0.2.5] - April 17, 2020
+
+- Update linters
+- Use typescript
+
 ## [0.2.4] - Feb 23, 2020
 
 - Configure eslint
