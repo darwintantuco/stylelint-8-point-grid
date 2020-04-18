@@ -1,6 +1,6 @@
 # stylelint-8-point-grid
 
-[![Build Status](https://travis-ci.org/darwintantuco/stylelint-8-point-grid.svg?branch=master)](https://travis-ci.org/darwintantuco/stylelint-8-point-grid)
+![Node.js CI](https://github.com/darwintantuco/stylelint-8-point-grid/workflows/Node.js%20CI/badge.svg)
 
 Validates any defined `margin`, `padding`, `height`, and `width`
 
