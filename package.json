@@ -20,6 +20,7 @@
     "prettier:check": "prettier --list-different '**/*.{js,ts,md,json}'",
     "prettier:fix": "prettier --write '**/*.{js,ts,md,json}'",
     "lint:js": "eslint 'src/**/*.ts' 'tests/**/*.ts'",
+    "lint:all": "run-p prettier:check lint:js",
     "ci": "run-p test prettier:check lint:js"
   },
   "husky": {
