@@ -1,6 +1,6 @@
 type WhitelistType = string[] | undefined
 
-export const validBase = (base: number): boolean => base % 1 == 0
+export const validBase = (base: number): boolean => base > 0
 
 export const hasPixelValue = (value: string): boolean =>
   String(value).includes('px')
