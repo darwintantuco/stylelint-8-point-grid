@@ -1,6 +1,6 @@
 import { createPlugin, utils } from 'stylelint'
 
-import { validBase, hasPixelValue, validPixelValue } from './utils'
+import { validBase, hasSupportedValue, validSupportedValue } from './utils'
 
 const { ruleMessages, validateOptions, report } = utils
 
@@ -47,7 +47,7 @@ const pattern = (props: string[]): RegExp =>
 const ignorePattern = new RegExp(ignoreList.join('|'))
 
 const valid = (value: string): boolean =>
-  hasPixelValue(value) && !String(value).match(ignorePattern)
+  hasSupportedValue(value) && !String(value).match(ignorePattern)
 
 const messages = ruleMessages(ruleName, {
   invalid: (prop, actual, base) =>
@@ -61,7 +61,7 @@ const { rule } = createPlugin(ruleName, (primaryOption) => {
       possible: {
         base: validBase,
         ignore: blacklist,
-        whitelist: hasPixelValue,
+        whitelist: hasSupportedValue,
       },
     })
     if (!validOptions) return
@@ -73,7 +73,7 @@ const { rule } = createPlugin(ruleName, (primaryOption) => {
 
     postcssRoot.walkDecls(pattern(props), (decl) => {
       if (!valid(decl.value)) return
-      if (!validPixelValue(decl.value, primaryOption.base, whitelist)) {
+      if (!validSupportedValue(decl.value, primaryOption.base, whitelist)) {
         report({
           ruleName: ruleName,
           result: postcssResult,
