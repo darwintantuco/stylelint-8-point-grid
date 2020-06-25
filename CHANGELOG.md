@@ -2,6 +2,13 @@
 
 All changes on this project will be documented in this file.
 
+## [1.0.0] - June 25, 2020
+
+- Support rem values
+- Update API
+  - whitelist -> allowlist
+  - ignore -> ignorelist
+
 ## [0.2.6] - April 17, 2020
 
 - Fix compilation error
