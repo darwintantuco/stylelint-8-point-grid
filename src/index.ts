@@ -11,7 +11,7 @@ const rules = {
 
 const plugins = ['stylelint-8-point-grid']
 
-const blacklist = [
+const supportedCssProperties = [
   'margin',
   'margin-top',
   'margin-bottom',
@@ -60,20 +60,23 @@ const { rule } = createPlugin(ruleName, (primaryOption) => {
       actual: primaryOption,
       possible: {
         base: validBase,
-        ignore: blacklist,
-        whitelist: hasSupportedValue,
+        ignorelist: supportedCssProperties,
+        allowlist: hasSupportedValue,
       },
     })
     if (!validOptions) return
 
-    const { ignore, whitelist } = primaryOption
+    const { ignorelist, allowlist } = primaryOption
 
-    let props = blacklist
-    if (ignore) props = blacklist.filter((prop) => !ignore.includes(prop))
+    let props = supportedCssProperties
+    if (ignorelist)
+      props = supportedCssProperties.filter(
+        (prop) => !ignorelist.includes(prop)
+      )
 
     postcssRoot.walkDecls(pattern(props), (decl) => {
       if (!valid(decl.value)) return
-      if (!validSupportedValue(decl.value, primaryOption.base, whitelist)) {
+      if (!validSupportedValue(decl.value, primaryOption.base, allowlist)) {
         report({
           ruleName: ruleName,
           result: postcssResult,
