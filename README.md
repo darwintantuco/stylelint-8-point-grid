@@ -2,7 +2,9 @@
 
 ![Node.js CI](https://github.com/darwintantuco/stylelint-8-point-grid/workflows/Node.js%20CI/badge.svg)
 
-Validates any defined `margin`, `padding`, `height`, and `width`
+Validates any defined `margin`, `padding`, `height`, and `width`.
+
+Supports px and rem values.
 
 ![](demo.png)
 
@@ -56,8 +58,8 @@ Update .stylelintrc or stylelint config in `package.json`
   "rules": {
     "plugin/8-point-grid": {
       "base": 4,
-      "whitelist": ["2px", "1px"],
-      "ignore": ["width", "height"]
+      "allowlist": ["2px", "1px"],
+      "ignorelist": ["width", "height"]
     }
   }
 }
@@ -67,11 +69,11 @@ Update .stylelintrc or stylelint config in `package.json`
 
 value used for divisibility checking
 
-### whitelist
+### allowlist
 
-array of px values to be excluded from divisibility checking
+array of px or rem values to be excluded from divisibility checking
 
-### ignore
+### ignorelist
 
 array of css properties to be excluded from divisibility checking
 

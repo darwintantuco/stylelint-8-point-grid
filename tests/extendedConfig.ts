@@ -5,8 +5,8 @@ testRule(rule, {
   ruleName: ruleName,
   config: {
     base: 4,
-    whitelist: ['2px', '1px'],
-    ignore: ['width', 'max-height', 'margin-bottom'],
+    allowlist: ['2px', '1px'],
+    ignorelist: ['width', 'max-height', 'margin-bottom'],
   },
 
   accept: [

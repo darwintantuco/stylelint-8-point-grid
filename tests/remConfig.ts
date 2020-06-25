@@ -7,8 +7,8 @@ testRule(rule, {
   ruleName: ruleName,
   config: {
     base,
-    whitelist: ['1px'],
-    ignore: ['width', 'max-height', 'margin-bottom'],
+    allowlist: ['1px'],
+    ignorelist: ['width', 'max-height', 'margin-bottom'],
   },
 
   accept: [
