@@ -4,7 +4,7 @@
 
 Validates any defined `margin`, `padding`, `height`, and `width`.
 
-Supports px and rem values.
+Supports pixel and rem values.
 
 ![](demo.png)
 
@@ -15,7 +15,7 @@ Supports px and rem values.
 
 ### Ignores
 
-- css calc() function
+- css `calc()` function
 - sass variables
 
 ## Installation
@@ -34,7 +34,7 @@ yarn add stylelint-8-point-grid --dev
 
 ## Usage
 
-Update .stylelintrc or stylelint config in `package.json`
+Update `.stylelintrc` or stylelint config in `package.json`.
 
 ### Recommended config
 
@@ -47,6 +47,8 @@ Update .stylelintrc or stylelint config in `package.json`
 }
 ```
 
+Uses base 8 for pixel values (and base 0.5 for rem values).
+
 ## Extending the config
 
 ```js
@@ -58,45 +60,52 @@ Update .stylelintrc or stylelint config in `package.json`
   "rules": {
     "plugin/8-point-grid": {
       "base": 4,
-      "allowlist": ["2px", "1px"],
+      "allowlist": ["2px", "1px", "0.0625rem"],
       "ignorelist": ["width", "height"]
     }
   }
 }
 ```
 
-### base (default: 8)
+### base
 
-value used for divisibility checking
+- value used for divisibility checking
+- base value is 8 by default
+- used to compute the base for rem values (`base / 16`)
+
+using 4 as base means:
+
+- pixel values should be divisible by 4
+- rem values should be divisible by 0.25
 
 ### allowlist
 
-array of px or rem values to be excluded from divisibility checking
+- array of pixel or rem values to be excluded from divisibility checking
 
 ### ignorelist
 
-array of css properties to be excluded from divisibility checking
-
-- margin
-- margin-top
-- margin-bottom
-- margin-left
-- margin-right
-- padding
-- padding-top
-- padding-bottom
-- padding-left
-- padding-right
-- height
-- min-height
-- max-height
-- width
-- min-width
-- max-width
-- top
-- bottom
-- right
-- left
+- array of css properties to be excluded from divisibility checking
+- supported values:
+  - margin
+  - margin-top
+  - margin-bottom
+  - margin-left
+  - margin-right
+  - padding
+  - padding-top
+  - padding-bottom
+  - padding-left
+  - padding-right
+  - height
+  - min-height
+  - max-height
+  - width
+  - min-width
+  - max-width
+  - top
+  - bottom
+  - right
+  - left
 
 ## License
 

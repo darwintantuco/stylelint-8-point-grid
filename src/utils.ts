@@ -1,6 +1,6 @@
 type AllowlistType = string[] | undefined
 
-export const validBase = (base: number): boolean => base > 0
+export const validBase = (base: number): boolean => base % 1 === 0
 
 export const hasSupportedValue = (value: string): boolean =>
   String(value).includes('px') || String(value).includes('rem')
@@ -9,9 +9,15 @@ const isAllowlist = (allowlist: AllowlistType, value: string): boolean =>
   (allowlist && allowlist.includes(value)) || false
 
 const divisibleBy = (value: string, base: number): boolean => {
-  // parseFloat() drops units at the end automatically
-  const number = parseFloat(value)
-  return number % Number(base) === 0
+  const baseRem = base / 16
+
+  if (value.includes('rem')) {
+    const number = parseFloat(value)
+    return number % Number(baseRem) === 0
+  }
+
+  const number = value.match(/\d+/)
+  return Number(number) % Number(base) === 0
 }
 
 export const validSupportedValue = (

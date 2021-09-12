@@ -29,10 +29,14 @@ testRule(rule, {
     { code: '.generic-card { padding-left: 8px; padding-top: 16px; }' },
     { code: '.generic-card { padding: 3em 8px 8px 8px; }' },
 
-    // ignore css calc() function
+    // Handle valid rem values
+    { code: '.generic-card { margin-left: 0.5rem; }' },
+    { code: '.generic-card { margin: 0.5rem 1rem; }' },
+
+    // Ignore css calc() function
     { code: '.generic-card { width: calc(100% - 31px); }' },
 
-    // ignore sass variables
+    // Ignore sass variables
     { code: '.generic-card { padding-left: $field-height; }' },
     {
       code:
@@ -77,5 +81,15 @@ testRule(rule, {
       code: '.generic-card { padding-left: 8px; padding-top: 5px; }',
       message: messages.invalid('padding-top', '5px', 8),
     },
+
+    // Handle invalid rem values
+    { code: '.generic-card { margin-left: 0.4rem; }' },
+    { code: '.generic-card { margin: 0.5rem 1.1rem; }' },
+
+    // Handle valid rem values with invalid px value
+    { code: '.generic-card { padding: 1px 0.5rem 1.5rem 2rem; }' },
+
+    // Handle valid px values with invalid rem value
+    { code: '.generic-card { padding: 8px 0.4rem 1.5rem 2rem; }' },
   ],
 })
