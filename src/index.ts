@@ -51,7 +51,9 @@ const valid = (value: string): boolean =>
 
 const messages = ruleMessages(ruleName, {
   invalid: (prop, actual, base) =>
-    `Invalid \`${prop}: ${actual}\`. It should be divisible by ${base}.`,
+    `Invalid \`${prop}: ${actual}\`. Pixel values should be divisible by ${base} and rem values should be divisible by ${
+      base / 16
+    }.`,
 })
 
 const { rule } = createPlugin(ruleName, (primaryOption) => {

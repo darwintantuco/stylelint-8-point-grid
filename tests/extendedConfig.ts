@@ -5,7 +5,7 @@ testRule(rule, {
   ruleName: ruleName,
   config: {
     base: 4,
-    allowlist: ['2px', '1px'],
+    allowlist: ['2px', '1px', '1.6rem', '0.0625rem'],
     ignorelist: ['width', 'max-height', 'margin-bottom'],
   },
 
@@ -20,6 +20,11 @@ testRule(rule, {
     { code: '.generic-card { margin: 2px 0; }' },
     { code: '.generic-card { max-height: 101px; }' },
     { code: '.generic-card { margin-bottom: 3px; }' },
+
+    // Handle valid rem values
+    { code: '.generic-card { height: 0.75rem; }' },
+    { code: '.generic-card { margin-left: 1.6rem; }' },
+    { code: '.generic-card { margin-left: 0.0625rem; }' },
   ],
 
   reject: [
@@ -39,5 +44,8 @@ testRule(rule, {
       code: '.generic-card { margin: 1px 2px 3px 4px; }',
       message: messages.invalid('margin', '1px 2px 3px 4px', 4),
     },
+
+    // Handle invalid rem values
+    { code: '.generic-card { margin-left: 1.7rem; }' },
   ],
 })
