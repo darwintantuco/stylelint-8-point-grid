@@ -1,6 +1,12 @@
 import { createPlugin, utils } from 'stylelint'
 
-import { validBase, hasSupportedValue, validSupportedValue } from './utils'
+import {
+  validBase,
+  hasPixelValue,
+  hasRemValue,
+  hasSupportedValue,
+  validSupportedValue,
+} from './utils'
 
 const { ruleMessages, validateOptions, report } = utils
 
@@ -50,10 +56,17 @@ const valid = (value: string): boolean =>
   hasSupportedValue(value) && !String(value).match(ignorePattern)
 
 const messages = ruleMessages(ruleName, {
-  invalid: (prop, actual, base) =>
-    `Invalid \`${prop}: ${actual}\`. Pixel values should be divisible by ${base} and rem values should be divisible by ${
-      base / 16
-    }.`,
+  invalid: (prop, actual, base) => {
+    const baseRem = base / 16
+
+    if (hasPixelValue(actual) && hasRemValue(actual))
+      return `Invalid \`${prop}: ${actual}\`. Pixel values should be divisible by ${base} and rem values should be divisible by ${baseRem}.`
+
+    if (hasPixelValue(actual))
+      return `Invalid \`${prop}: ${actual}\`. Pixel values should be divisible by ${base}.`
+
+    return `Invalid \`${prop}: ${actual}\`. Rem values should be divisible by ${baseRem}.`
+  },
 })
 
 const { rule } = createPlugin(ruleName, (primaryOption) => {
