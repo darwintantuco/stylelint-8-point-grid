@@ -5,13 +5,16 @@ export const validBase = (base: number): boolean => base % 1 === 0
 export const hasSupportedValue = (value: string): boolean =>
   String(value).includes('px') || String(value).includes('rem')
 
+export const hasPixelValue = (value: string): boolean => value.includes('px')
+export const hasRemValue = (value: string): boolean => value.includes('rem')
+
 const isAllowlist = (allowlist: AllowlistType, value: string): boolean =>
   (allowlist && allowlist.includes(value)) || false
 
 const divisibleBy = (value: string, base: number): boolean => {
   const baseRem = base / 16
 
-  if (value.includes('rem')) {
+  if (hasRemValue(value)) {
     const number = parseFloat(value)
     return number % Number(baseRem) === 0
   }
