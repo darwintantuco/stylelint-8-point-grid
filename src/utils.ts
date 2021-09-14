@@ -15,6 +15,7 @@ const divisibleBy = (value: string, base: number): boolean => {
   const baseRem = base / 16
 
   if (hasRemValue(value)) {
+    // parseFloat() drops units at the end automatically
     const number = parseFloat(value)
     return number % Number(baseRem) === 0
   }
@@ -30,7 +31,7 @@ export const validSupportedValue = (
 ): boolean => {
   return (
     // handle multiple supported values
-    //   e.g. padding: 8px 8px 1px 8px or padding: 3em 8px 8px 8px;
+    //   e.g. padding: 8px 8px 1px 8px or padding: 3rem 8px 8px 8px;
     value
       .split(/[\s\r\n]+/)
       .filter(hasSupportedValue)
