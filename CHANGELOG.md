@@ -2,6 +2,14 @@
 
 All changes on this project will be documented in this file.
 
+## [2.1.0] - Sept 13, 2021
+
+- Improvements on error message
+
+## [2.0.0] - Sept 12, 2021
+
+- Improvements on handling rem values
+
 ## [1.0.0] - June 25, 2020
 
 - Support rem values
