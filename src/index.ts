@@ -42,9 +42,40 @@ const supportedCssProperties = [
   'bottom',
   'right',
   'left',
+
+  // CSS Logical Properties
+  'margin-block',
+  'margin-block-start',
+  'margin-block-end',
+  'margin-inline',
+  'margin-inline-start',
+  'margin-inline-end',
+
+  'padding-block',
+  'padding-block-start',
+  'padding-block-end',
+  'padding-inline',
+  'padding-inline-start',
+  'padding-inline-end',
+
+  'block-size',
+  'min-block-size',
+  'max-block-size',
+
+  'inline-size',
+  'min-inline-size',
+  'max-inline-size',
+
+  'inset',
+  'inset-block',
+  'inset-inline',
+  'inset-block-start',
+  'inset-block-end',
+  'inset-inline-start',
+  'inset-inline-end',
 ]
 
-// ignore values with `calc` and sass variables
+// Ignore values with `calc` and sass variables
 const ignoreList = ['calc', '\\$\\w+']
 
 const pattern = (props: string[]): RegExp =>

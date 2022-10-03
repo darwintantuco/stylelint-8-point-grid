@@ -29,6 +29,10 @@ testRule(rule, {
     { code: '.generic-card { padding-left: 8px; padding-top: 16px; }' },
     { code: '.generic-card { padding: 3em 8px 8px 8px; }' },
 
+    // Handle CSS Logical Properties
+    { code: '.generic-card { block-size: 64px; }' },
+    { code: '.generic-card { margin-block-start: 8px; }' },
+
     // Handle valid rem values
     { code: '.generic-card { margin-left: 0.5rem; }' },
     { code: '.generic-card { margin: 0.5rem 1rem; }' },
@@ -83,13 +87,35 @@ testRule(rule, {
     },
 
     // Handle invalid rem values
-    { code: '.generic-card { margin-left: 0.4rem; }' },
-    { code: '.generic-card { margin: 0.5rem 1.1rem; }' },
+    {
+      code: '.generic-card { margin-left: 0.4rem; }',
+      message: messages.invalid('margin-left', '0.4rem', 8),
+    },
+    {
+      code: '.generic-card { margin: 0.5rem 1.1rem; }',
+      message: messages.invalid('margin', '0.5rem 1.1rem', 8),
+    },
 
     // Handle valid rem values with invalid px value
-    { code: '.generic-card { padding: 1px 0.5rem 1.5rem 2rem; }' },
+    {
+      code: '.generic-card { padding: 1px 0.5rem 1.5rem 2rem; }',
+      message: messages.invalid('padding', '1px 0.5rem 1.5rem 2rem', 8),
+    },
 
     // Handle valid px values with invalid rem value
-    { code: '.generic-card { padding: 8px 0.4rem 1.5rem 2rem; }' },
+    {
+      code: '.generic-card { padding: 8px 0.4rem 1.5rem 2rem; }',
+      message: messages.invalid('padding', '8px 0.4rem 1.5rem 2rem', 8),
+    },
+
+    // Handle invalid CSS Logical Properties
+    {
+      code: '.generic-card { block-size: 63px; }',
+      message: messages.invalid('block-size', '63px', 8),
+    },
+    {
+      code: '.generic-card { margin-block-start: 7px; }',
+      message: messages.invalid('margin-block-start', '7px', 8),
+    },
   ],
 })
