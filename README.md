@@ -61,6 +61,7 @@ Uses base 8 for pixel values (and base 0.5 for rem values).
     "plugin/8-point-grid": {
       "base": 4,
       "allowlist": ["2px", "1px", "0.0625rem"],
+      "customProperties": ['size', 'position'],
       "ignorelist": ["width", "height"]
     }
   }
@@ -77,6 +78,10 @@ using 4 as base means:
 
 - pixel values should be divisible by 4
 - rem values should be divisible by 0.25
+
+### customProperties
+
+- array of custom properties, useful when you use custom shorthand properties like [postcss-short](https://github.com/csstools/postcss-short)
 
 ### allowlist
 

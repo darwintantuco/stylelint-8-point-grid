@@ -6,7 +6,10 @@ export const hasSupportedValue = (value: string): boolean =>
   String(value).includes('px') || String(value).includes('rem')
 
 export const hasPixelValue = (value: string): boolean => value.includes('px')
+
 export const hasRemValue = (value: string): boolean => value.includes('rem')
+
+export const isString = (value: string): boolean => typeof value === 'string'
 
 const isAllowlist = (allowlist: AllowlistType, value: string): boolean =>
   (allowlist && allowlist.includes(value)) || false

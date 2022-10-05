@@ -6,6 +6,7 @@ testRule(rule, {
   config: {
     base: 4,
     allowlist: ['2px', '1px', '1.6rem', '0.0625rem'],
+    customProperties: ['size', 'position'],
     ignorelist: ['width', 'max-height', 'margin-bottom', 'margin-block'],
   },
 
@@ -17,10 +18,15 @@ testRule(rule, {
     { code: '.generic-card { margin-left: 1px; }' },
     { code: '.generic-card { padding: 1px 2px 4px 4px; }' },
     { code: '.generic-card { margin: 2px 0; }' },
+    { code: '.generic-card { height: 0.75rem; }' },
 
     // Handle CSS Logical Properties
     { code: '.generic-card { block-size: 64px; }' },
     { code: '.generic-card { margin-block-start: 8px; }' },
+
+    // Handle allowlist
+    { code: '.generic-card { margin-left: 1.6rem; }' },
+    { code: '.generic-card { margin-left: 0.0625rem; }' },
 
     // Handle ignorelist
     { code: '.generic-card { width: 5px; }' },
@@ -28,10 +34,10 @@ testRule(rule, {
     { code: '.generic-card { margin-bottom: 3px; }' },
     { code: '.generic-card { margin-block: 3px; }' },
 
-    // Handle valid rem values
-    { code: '.generic-card { height: 0.75rem; }' },
-    { code: '.generic-card { margin-left: 1.6rem; }' },
-    { code: '.generic-card { margin-left: 0.0625rem; }' },
+    // Handle custom properties
+    { code: '.generic-card { size: 64px; }' },
+    { code: '.generic-card { size: 1.6rem; }' },
+    { code: '.generic-card { position: 8px 0 1.6rem 0.75rem; }' },
   ],
 
   reject: [
@@ -53,6 +59,23 @@ testRule(rule, {
     },
 
     // Handle invalid rem values
-    { code: '.generic-card { margin-left: 1.7rem; }' },
+    {
+      code: '.generic-card { margin-left: 1.7rem; }',
+      message: messages.invalid('margin-left', '1.7rem', 4),
+    },
+
+    // Handle invalid custom properties
+    {
+      code: '.generic-card { size: 63px; }',
+      message: messages.invalid('size', '63px', 4),
+    },
+    {
+      code: '.generic-card { size: 1.7rem; }',
+      message: messages.invalid('size', '1.7rem', 4),
+    },
+    {
+      code: '.generic-card { position: 7px 0 1.6rem 0.75rem; }',
+      message: messages.invalid('position', '7px 0 1.6rem 0.75rem', 4),
+    },
   ],
 })

@@ -1,10 +1,11 @@
 import { createPlugin, utils } from 'stylelint'
 
 import {
-  validBase,
   hasPixelValue,
   hasRemValue,
   hasSupportedValue,
+  isString,
+  validBase,
   validSupportedValue,
 } from './utils'
 
@@ -108,19 +109,22 @@ const { rule } = createPlugin(ruleName, (primaryOption) => {
         base: validBase,
         ignorelist: supportedCssProperties,
         allowlist: hasSupportedValue,
+        customProperties: isString,
       },
     })
     if (!validOptions) return
 
-    const { ignorelist, allowlist } = primaryOption
+    const {
+      allowlist = [],
+      customProperties = [],
+      ignorelist = [],
+    } = primaryOption
 
-    let props = supportedCssProperties
-    if (ignorelist)
-      props = supportedCssProperties.filter(
-        (prop) => !ignorelist.includes(prop)
-      )
+    const properties = [...supportedCssProperties, ...customProperties].filter(
+      (property) => !ignorelist.includes(property)
+    )
 
-    postcssRoot.walkDecls(pattern(props), (decl) => {
+    postcssRoot.walkDecls(pattern(properties), (decl) => {
       if (!valid(decl.value)) return
       if (!validSupportedValue(decl.value, primaryOption.base, allowlist)) {
         report({

@@ -2,6 +2,11 @@
 
 All changes on this project will be documented in this file.
 
+## [2.2.0] - Oct 5, 2022
+
+- Support css logical properties
+- Support custom properties
+
 ## [2.1.0] - Sept 13, 2021
 
 - Improvements on error message
