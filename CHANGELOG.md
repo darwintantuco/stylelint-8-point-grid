@@ -2,6 +2,10 @@
 
 All changes on this project will be documented in this file.
 
+## [3.0.0] - April 12, 2025
+
+- Support stylelint v14
+
 ## [2.2.0] - Oct 5, 2022
 
 - Support css logical properties
