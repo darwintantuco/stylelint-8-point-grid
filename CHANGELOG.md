@@ -2,6 +2,11 @@
 
 All changes on this project will be documented in this file.
 
+## [4.0.0] - April 12, 2025
+
+- Support stylelint v15
+- Drop support for stylelint v14 and below
+
 ## [3.0.0] - April 12, 2025
 
 - Support stylelint v14
