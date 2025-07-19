@@ -5,6 +5,7 @@ All changes on this project will be documented in this file.
 ## [5.0.1] - 2025-07-19
 
 - Support stylelint v16
+- Security updates: Updated cross-spawn and other dependencies to resolve vulnerabilities
 - Improved README documentation with clearer examples and structure
 - Added detailed limitations section explaining calc() and Sass variable handling
 - Added best practices section for working with dynamic values
