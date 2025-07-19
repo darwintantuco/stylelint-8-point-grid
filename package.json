@@ -43,6 +43,7 @@
   },
   "resolutions": {
     "postcss": "^7.0.39",
+    "brace-expansion": "^1.1.12",
     "@babel/runtime": "^7.26.10",
     "@babel/runtime-corejs3": "^7.26.10",
     "minimist": "^1.2.8",
