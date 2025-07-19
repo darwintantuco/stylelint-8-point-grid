@@ -21,11 +21,11 @@ A Stylelint plugin that ensures spacing values (margin, padding, height, width, 
 
 ## Features
 
-✅ Validates pixel (`px`) and rem values
-✅ Supports CSS Logical Properties
-✅ Configurable base value (default: 8px / 0.5rem)
-✅ Allowlist for exceptions
-✅ Ignore specific properties
+- ✅ Validates pixel (`px`) and rem values
+- ✅ Supports CSS Logical Properties
+- ✅ Configurable base value (default: 8px / 0.5rem)
+- ✅ Allowlist for exceptions
+- ✅ Ignore specific properties
 
 ![](demo.png)
 
