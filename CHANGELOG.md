@@ -2,7 +2,7 @@
 
 All changes on this project will be documented in this file.
 
-## [5.0.1] - 2025-07-19
+## [5.0.1] - July 19, 2025
 
 - Support stylelint v16
 - Security updates: Updated cross-spawn and other dependencies to resolve vulnerabilities
