@@ -4,14 +4,11 @@ All changes on this project will be documented in this file.
 
 ## [5.0.1] - 2025-07-19
 
+- Support stylelint v16
 - Improved README documentation with clearer examples and structure
 - Added detailed limitations section explaining calc() and Sass variable handling
 - Added best practices section for working with dynamic values
 - Enhanced features section with better formatting
-
-## [5.0.0] - April 13, 2025
-
-- Support stylelint v16
 
 ## [4.0.0] - April 12, 2025
 
